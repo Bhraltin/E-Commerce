@@ -1,5 +1,5 @@
 import { useState } from "react"
-import {Link} from "react-router-dom"
+import {Link, useHistory} from "react-router-dom"
 import {
   Menu,
   X,
@@ -15,8 +15,14 @@ import {
   Twitter,
 } from "lucide-react"
 
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(true)
+  const history = useHistory();
+  const handleSignupClick = () => {
+  history.push("/signup")
+  }
+
 
   return (
     <header className="w-full">
@@ -54,7 +60,7 @@ export default function Header() {
             </nav>
 
             <div className="hidden md:flex items-center gap-4">
-              <Link to="/login" className="text-blue-600 hover:text-blue-700">
+              <Link to="/signup" className="text-blue-600 hover:text-blue-700" onClick={handleSignupClick} >
                 Login / Register
               </Link>
               <button>
@@ -97,7 +103,7 @@ export default function Header() {
                 </Link>
               </nav>
               <div className="flex items-center gap-4 mt-4 pt-4 border-t">
-                <Link to="/login" className="text-blue-600 hover:text-blue-700">
+                <Link to="/signup" className="text-blue-600 hover:text-blue-700">
                   Login / Register
                 </Link>
                 <button>
