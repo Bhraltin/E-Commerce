@@ -11,7 +11,7 @@ export default function HomePage () {
       <HeroSlider/>
       <CategoryPick/>
       <ProductList/>
-   <Slider/>
+      <Slider/>
       </Layout> 
         </>
     )
