@@ -8,6 +8,7 @@ import Contact from './components/pages/Contact'
 import Blog from './components/pages/Blog'
 import HomePage from './components/pages/home/HomePage'
 import SignupForm from './components/pages/SignupForm'
+import LoginForm from './components/LoginForm'
 
 
 
@@ -22,6 +23,9 @@ function App() {
     </Route>
     <Route path="/signup">
     <SignupForm/>
+    </Route>
+    <Route path="/login">
+      <LoginForm/>
     </Route>
     <Route path="shop">
     <ShopPage />

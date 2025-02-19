@@ -1,12 +1,21 @@
 import Footer from "./Footer";
 import Header from "./Header";
 
-export default function Layout ({children}) {
-return (
+import { useSelector } from "react-redux"
+import { Link } from "react-router-dom"
+
+const Layout = ({ children }) => {
+ 
+
+  return (
     <>
-    <Header/>
-    <main>{children}</main>
-    <Footer/>
-    </>
-)
+  <Header/>
+  <main className="mx-auto font-montserrat"> {children} </main>
+  <Footer/>
+  </>
+ 
+  )
 }
+
+export default Layout
+

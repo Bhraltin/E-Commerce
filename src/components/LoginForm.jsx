@@ -1,8 +1,9 @@
 import { useForm } from "react-hook-form"
 import { useDispatch } from "react-redux"
 import { useHistory, useLocation } from "react-router-dom"
-import { loginUser } from "../store/actions/clientActions"
+
 import { toast } from "react-toastify"
+import { loginUser } from "../Store/actions/clientAction"
 
 const LoginForm = () => {
   const {
@@ -16,7 +17,7 @@ const LoginForm = () => {
 
   const onSubmit = async (data) => {
     try {
-      await dispatch(loginUser(data))
+      await dispatch(loginUser (data))
       const { from } = location.state || { from: { pathname: "/" } }
       history.replace(from)
     } catch (error) {

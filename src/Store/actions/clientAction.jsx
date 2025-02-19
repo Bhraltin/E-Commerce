@@ -1,5 +1,6 @@
-import api from "../../api"
-import md5 from "md5"
+
+
+import api from "../../components/axios"
 
 export const setUser = (user) => ({ type: "SET_USER", payload: user })
 export const setRoles = (roles) => ({ type: "SET_ROLES", payload: roles })

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import {Link, useHistory} from "react-router-dom"
+import {Link} from "react-router-dom"
 import {
   Menu,
   X,
@@ -18,10 +18,6 @@ import {
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(true)
-  const history = useHistory();
-  const handleSignupClick = () => {
-  history.push("/signup")
-  }
 
 
   return (
@@ -60,8 +56,11 @@ export default function Header() {
             </nav>
 
             <div className="hidden md:flex items-center gap-4">
-              <Link to="/signup" className="text-blue-600 hover:text-blue-700" onClick={handleSignupClick} >
-                Login / Register
+            <Link to="/login" className="text-blue-600 hover:text-blue-700" >
+              Login
+              </Link>
+              <Link to="/signup" className="text-blue-600 hover:text-blue-700" >
+               Register
               </Link>
               <button>
                 <Search className="w-5 h-5" />
