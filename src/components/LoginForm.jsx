@@ -15,16 +15,30 @@ const LoginForm = () => {
   const history = useHistory()
   const location = useLocation()
 
+  
   const onSubmit = async (data) => {
     try {
-      await dispatch(loginUser (data))
-      const { from } = location.state || { from: { pathname: "/" } }
-      history.replace(from)
+      console.log("Submitting form with data:", data)
+      const user = await dispatch(loginUser(data))
+      console.log("Login result:", user)
+      if (user && user.email) {
+        const { from } = location.state || { from: { pathname: "/" } }
+        history.replace(from)
+        toast.success(`Welcome, ${user.name}!`)
+      } else {
+        throw new Error("Invalid login result")
+      }
     } catch (error) {
-      toast.error("Login failed. Please check your credentials.")
+      console.error("Login error in form:", error)
+      let errorMessage = "Login failed. Please check your credentials and try again."
+      if (error.response && error.response.data && error.response.data.message) {
+        errorMessage = error.response.data.message
+      } else if (error.message) {
+        errorMessage = error.message
+      }
+      toast.error(errorMessage)
     }
   }
-
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div>

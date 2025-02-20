@@ -1,5 +1,5 @@
 const initialState = {
-    user: null,
+    name: [],
     addressList: [],
     creditCards: [],
     roles: [],
