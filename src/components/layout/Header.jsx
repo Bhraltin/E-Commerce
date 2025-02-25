@@ -1,33 +1,18 @@
 import { useState } from "react"
-import {Link, useHistory} from "react-router-dom"
-import {
-  Menu,
-  X,
-  Phone,
-  Mail,
-  Search,
-  ShoppingCart,
-  Heart,
-  ChevronDown,
-  Instagram,
-  Youtube,
-  Facebook,
-  Twitter,
-} from "lucide-react"
-
+import { Link, useHistory } from "react-router-dom"
+import { Menu, X, Phone, Mail, Search, ShoppingCart, Heart, ChevronDown, Instagram, Youtube, Facebook, Twitter } from 'lucide-react'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(true)
   const history = useHistory();
   const handleSignupClick = () => {
-  history.push("/signup")
+    history.push("/signup")
   }
-
 
   return (
     <header className="w-full">
-
-<div className="bg-gray-800 text-white py-2 px-4">
+      {/* Top Tab */}
+      <div className="bg-gray-800 text-white py-2 px-4">
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center text-sm">
           <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 mb-2 md:mb-0">
             <a href="tel:(225) 555-0118" className="flex items-center hover:text-gray-300">
@@ -62,21 +47,7 @@ export default function Header() {
         </div>
       </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      {/* Main Navigation */}
       <div className="bg-white border-b">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
@@ -111,7 +82,7 @@ export default function Header() {
             </nav>
 
             <div className="hidden md:flex items-center gap-4">
-              <Link to="/signup" className="text-blue-600 hover:text-blue-700" onClick={handleSignupClick} >
+              <Link to="/signup" className="text-blue-600 hover:text-blue-700" onClick={handleSignupClick}>
                 Login / Register
               </Link>
               <button>
@@ -163,12 +134,13 @@ export default function Header() {
                 <button className="relative">
                   <ShoppingCart className="w-5 h-5" />
                   <span className="absolute -top-2 -right-2 bg-blue-600 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
-                    
+                    1
                   </span>
                 </button>
                 <button className="relative">
                   <Heart className="w-5 h-5" />
                   <span className="absolute -top-2 -right-2 bg-blue-600 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+                    1
                   </span>
                 </button>
               </div>

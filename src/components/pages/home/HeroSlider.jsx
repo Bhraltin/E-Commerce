@@ -53,7 +53,7 @@ export default function HeroSlider() {
                   <p className="text-lg opacity-90">
                     {slide.description}
                   </p>
-                  <button className="bg-[#2DC071] hover:bg-[#248c55] transition-colors duration-300 text-white px-10 py-4 text-base font-bold tracking-wide">
+                  <button className="bg-green-500 text-white px-10 py-4 font-bold tracking-wide">
                     {slide.buttonText}
                   </button>
                 </div>
@@ -78,7 +78,7 @@ export default function HeroSlider() {
         className="absolute left-4 top-1/2 -translate-y-1/2 text-white p-2 rounded-full transition-opacity hover:opacity-75"
         aria-label="Previous slide"
       >
-        <ChevronLeft className="w-8 h-8 md:w-10 md:h-10" />
+        <ChevronLeft className="w-8 h-8 md:w-10 md:h-10 text-white" />
       </button>
       <button
         onClick={nextSlide}
