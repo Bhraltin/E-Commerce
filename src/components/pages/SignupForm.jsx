@@ -3,8 +3,9 @@ import { useForm } from 'react-hook-form';
 import { useHistory} from 'react-router-dom';
 import api from '../axios';
 import { Loader2 } from 'lucide-react';
+import Layout from '../layout/Layout';
 
-// Create Axios instance
+
 
 
 const SignupForm = () => {
@@ -94,6 +95,7 @@ const SignupForm = () => {
 
 
   return (
+    <Layout>
     <div className="min-h-screen bg-gray-100 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
         <h2 className="text-2xl font-bold mb-6 text-center">Sign Up</h2>
@@ -290,6 +292,7 @@ const SignupForm = () => {
         </form>
       </div>
     </div>
+    </Layout>
   );
 };
 

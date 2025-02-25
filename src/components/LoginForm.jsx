@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux"
 import { useHistory, useLocation } from "react-router-dom"
 import { loginUser } from "../store/actions/clientActions"
 import { toast } from "react-toastify"
+import Layout from "../components/layout/Layout"
 
 const LoginForm = () => {
   const {
@@ -25,6 +26,7 @@ const LoginForm = () => {
   }
 
   return (
+    <Layout>
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div>
         <label htmlFor="email" className="block text-sm font-medium text-gray-700">
@@ -77,6 +79,7 @@ const LoginForm = () => {
         Sign in
       </button>
     </form>
+    </Layout>
   )
 }
 
