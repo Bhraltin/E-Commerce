@@ -48,7 +48,7 @@ export default function Header() {
       </div>
 
       {/* Main Navigation */}
-      <div className="bg-white border-b">
+      <div className="bg-white ">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <Link to="/" className="text-xl font-bold">
