@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 import ShopCategories from "./ShopCategories";
 import ShopList from "./ShopList";
+import Logo from "./Logo";
 
  
 export default function ShopPage(){
@@ -33,6 +34,7 @@ export default function ShopPage(){
       </div>
       <ShopCategories/>
       <ShopList/>
+    <Logo/>
     </Layout>
 )
 }
