@@ -1,3 +1,9 @@
+import Layout from "../layout/Layout";
+
 export default function ShopPage(){
-    return (<div>ShopPage</div>)
+    return (
+        <Layout>
+    <div>ShopPage</div>
+    </Layout>
+)
 }
