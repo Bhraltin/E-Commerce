@@ -26,6 +26,57 @@ export default function Header() {
 
   return (
     <header className="w-full">
+
+<div className="bg-gray-800 text-white py-2 px-4">
+        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center text-sm">
+          <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 mb-2 md:mb-0">
+            <a href="tel:(225) 555-0118" className="flex items-center hover:text-gray-300">
+              <Phone className="w-4 h-4 mr-1" />
+              (225) 555-0118
+            </a>
+            <a href="mailto:michelle.rivera@example.com" className="flex items-center hover:text-gray-300">
+              <Mail className="w-4 h-4 mr-1" />
+              michelle.rivera@example.com
+            </a>
+          </div>
+          <div className="text-center md:text-left mb-2 md:mb-0">
+            Follow Us and get a chance to win 80% off
+          </div>
+          <div className="flex items-center gap-4">
+            <span className="hidden md:inline">Follow Us :</span>
+            <div className="flex gap-3">
+              <a href="#" className="hover:text-gray-300">
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a href="#" className="hover:text-gray-300">
+                <Youtube className="w-4 h-4" />
+              </a>
+              <a href="#" className="hover:text-gray-300">
+                <Facebook className="w-4 h-4" />
+              </a>
+              <a href="#" className="hover:text-gray-300">
+                <Twitter className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       <div className="bg-white border-b">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
