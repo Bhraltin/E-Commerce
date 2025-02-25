@@ -20,7 +20,7 @@ export default function CategoryPick() {
           <div className="md:col-span-1">
             <Link to="/category/men" className="relative block group">
               <img
-                src="/placeholder.svg"
+                src="/images/men.jpg"
                 alt="Men's Fashion"
                 className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
@@ -33,37 +33,20 @@ export default function CategoryPick() {
             </Link>
           </div>
 
-          {/* Women - Large Image */}
-          <div className="md:col-span-1">
-            <Link to="/category/women" className="relative block group">
-              <img
-                src="/placeholder.svg"
-                alt="Women's Fashion"
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors" />
-              <div className="absolute bottom-6 left-6">
-                <span className="bg-white px-6 py-2 text-sm font-bold text-gray-900">
-                  WOMEN
-                </span>
-              </div>
-            </Link>
-          </div>
-
-          {/* Right Column (Stacked Accessories & Kids) */}
+          {/* Center Column (Women & Kids) */}
           <div className="md:col-span-1 flex flex-col gap-4">
-            {/* Accessories */}
+            {/* Women */}
             <div className="relative block group">
-              <Link to="/category/accessories">
+              <Link to="/category/women">
                 <img
-                  src="/placeholder.svg"
-                  alt="Accessories"
+                  src="/images/women.jpg"
+                  alt="Women's Fashion"
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors" />
                 <div className="absolute bottom-6 left-6">
                   <span className="bg-white px-6 py-2 text-sm font-bold text-gray-900">
-                    ACCESSORIES
+                    WOMEN
                   </span>
                 </div>
               </Link>
@@ -73,7 +56,7 @@ export default function CategoryPick() {
             <div className="relative block group">
               <Link to="/category/kids">
                 <img
-                  src="/placeholder.svg"
+                  src="/images/kids.jpg"
                   alt="Kids Fashion"
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
@@ -85,6 +68,23 @@ export default function CategoryPick() {
                 </div>
               </Link>
             </div>
+          </div>
+
+          {/* Accessories */}
+          <div className="md:col-span-1">
+            <Link to="/category/accessories" className="relative block group">
+              <img
+                src="/images/accessories.jpg"
+                alt="Accessories"
+                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors" />
+              <div className="absolute bottom-6 left-6">
+                <span className="bg-white px-6 py-2 text-sm font-bold text-gray-900">
+                  ACCESSORIES
+                </span>
+              </div>
+            </Link>
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@ const initialState = {
     address: {},
   }
   
-  const shoppingCartReducer = (state = initialState, action) => {
+  const ShoppingCartReducer = (state = initialState, action) => {
     switch (action.type) {
       case "SET_CART":
         return { ...state, cart: action.payload }
@@ -17,6 +17,6 @@ const initialState = {
     }
   }
   
-  export default shoppingCartReducer
+  export default ShoppingCartReducer
   
   
