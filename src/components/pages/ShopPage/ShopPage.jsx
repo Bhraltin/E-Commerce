@@ -1,4 +1,4 @@
-import Layout from "../layout/Layout";
+import Layout from "../../layout/Layout";
 import {Link} from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 
@@ -8,7 +8,7 @@ export default function ShopPage(){
      <Layout>
    <div className="min-h-screen bg-gray-50">
       {/* Shop Header Section */}
-      <div className="bg-gray-100 ">
+      <div className="bg-gray-100">
         <div className="container mx-auto px-4 py-8">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             {/* Page Title */}
