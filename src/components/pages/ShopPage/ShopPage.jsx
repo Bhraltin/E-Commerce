@@ -1,12 +1,13 @@
 import Layout from "../../layout/Layout";
 import {Link} from "react-router-dom";
 import { ChevronRight } from "lucide-react";
+import ShopCategories from "./ShopCategories";
 
  
 export default function ShopPage(){
     return (
      <Layout>
-   <div className="min-h-screen bg-gray-50">
+   <div className=" bg-gray-50">
       {/* Shop Header Section */}
       <div className="bg-gray-100">
         <div className="container mx-auto px-4 py-8">
@@ -29,6 +30,7 @@ export default function ShopPage(){
         </div>
       </div>
       </div>
+      <ShopCategories/>
     </Layout>
 )
 }
