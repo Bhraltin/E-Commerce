@@ -8,7 +8,7 @@ const initialState = {
     fetchState: "NOT_FETCHED",
   }
   
-  const productReducer = (state = initialState, action) => {
+  const ProductReducer = (state = initialState, action) => {
     switch (action.type) {
       case "SET_CATEGORIES":
         return { ...state, categories: action.payload }
@@ -29,6 +29,6 @@ const initialState = {
     }
   }
   
-  export default productReducer
+  export default ProductReducer;
   
   

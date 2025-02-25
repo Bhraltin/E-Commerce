@@ -20,7 +20,7 @@ export default function CategoryPick() {
           <div className="md:col-span-1">
             <Link to="/category/men" className="relative block group">
               <img
-                src="/placeholder.svg"
+                src="/images/men.jpg"
                 alt="Men's Fashion"
                 className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
@@ -37,7 +37,7 @@ export default function CategoryPick() {
           <div className="md:col-span-1">
             <Link to="/category/women" className="relative block group">
               <img
-                src="/placeholder.svg"
+                src="/images/women.jpg"
                 alt="Women's Fashion"
                 className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
@@ -56,7 +56,7 @@ export default function CategoryPick() {
             <div className="relative block group">
               <Link to="/category/accessories">
                 <img
-                  src="/placeholder.svg"
+                  src="/images/accessories.jpg"
                   alt="Accessories"
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
@@ -73,7 +73,7 @@ export default function CategoryPick() {
             <div className="relative block group">
               <Link to="/category/kids">
                 <img
-                  src="/placeholder.svg"
+                  src="/images/kids.jpg"
                   alt="Kids Fashion"
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
