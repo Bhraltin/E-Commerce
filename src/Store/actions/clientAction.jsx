@@ -1,4 +1,4 @@
-import api from "../../api"
+import api from "../../components/axios"
 import md5 from "md5"
 
 export const setUser = (user) => ({ type: "SET_USER", payload: user })
