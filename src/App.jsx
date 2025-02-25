@@ -23,7 +23,7 @@ function App() {
     <Route path="/signup">
     <SignupForm/>
     </Route>
-    <Route path="shop">
+    <Route path="/shop">
     <ShopPage />
     </Route>
     <Route path="about">

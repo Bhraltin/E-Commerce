@@ -62,10 +62,10 @@ export default function Header() {
                 Home
               </Link>
               <div className="relative group">
-                <button className="flex items-center gap-1 hover:text-blue-600">
+                <Link to="/shop" className="flex items-center gap-1 hover:text-blue-600">
                   Shop
                   <ChevronDown className="w-4 h-4" />
-                </button>
+                </Link>
               </div>
               <Link to="/about" className="hover:text-blue-600">
                 About
