@@ -32,7 +32,7 @@ function App() {
     <Route path="blog">
     <Blog/>
     </Route>
-    <Route path="contact">
+    <Route path="/contact">
     <Contact/>
     </Route>
     </Switch>
