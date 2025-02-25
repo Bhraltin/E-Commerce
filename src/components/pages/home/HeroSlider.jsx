@@ -1,6 +1,4 @@
-
-import { useState } from "react"
-
+import { useState, useEffect } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
 const slides = [
@@ -9,15 +7,22 @@ const slides = [
     title: "NEW COLLECTION",
     subtitle: "SUMMER 2020",
     description: "We know how large objects will act, but things on a small scale.",
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/desktop-shop-header-1-A3K8AgpHYJV888dxWke2kDGEkcR9Zb.png",
+    image: "/images/hero1.jpg",
     buttonText: "SHOP NOW",
   },
-
+  {
+    id: 2,
+    title: "NEW COLLECTION",
+    subtitle: "SUMMER 2020",
+    description: "We know how large objects will act, but things on a small scale.",
+    image: "/images/hero2.jpg",
+    buttonText: "SHOP NOW",
+  },
 ]
 
 export default function HeroSlider() {
   const [currentSlide, setCurrentSlide] = useState(0)
+
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length)
@@ -28,30 +33,37 @@ export default function HeroSlider() {
   }
 
   return (
-    <div className="relative w-full overflow-hidden bg-cyan-400">
+    <div className="relative w-full overflow-hidden bg-[#17C6CA]">
       <div
         className="relative flex transition-transform duration-500 ease-in-out"
         style={{ transform: `translateX(-${currentSlide * 100}%)` }}
       >
-        {slides.map((slide, index) => (
+        {slides.map((slide) => (
           <div key={slide.id} className="w-full flex-shrink-0">
-            <div className="container mx-auto px-4 flex items-center min-h-[600px]">
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div className="text-white space-y-6">
-                  <span className="text-xl font-medium">{slide.subtitle}</span>
-                  <h1 className="text-5xl md:text-6xl font-bold leading-tight">{slide.title}</h1>
-                  <p className="text-lg md:text-xl">{slide.description}</p>
-                  <button className="bg-green-600 text-white px-8 py-4 rounded-md hover:bg-green-600 ">
+            <div className="container mx-auto px-4 lg:px-8">
+              <div className="grid md:grid-cols-2 gap-8 items-center min-h-[600px]">
+                {/* Text Content */}
+                <div className="text-white space-y-6 max-w-xl">
+                  <h3 className="text-xl font-medium tracking-wide">
+                    {slide.subtitle}
+                  </h3>
+                  <h1 className="text-5xl md:text-6xl font-bold tracking-wide">
+                    {slide.title}
+                  </h1>
+                  <p className="text-lg opacity-90">
+                    {slide.description}
+                  </p>
+                  <button className="bg-green-500 text-white px-10 py-4 font-bold tracking-wide">
                     {slide.buttonText}
                   </button>
                 </div>
+
+                {/* Image - Hidden on mobile */}
                 <div className="hidden md:block">
                   <img
-                    src={slide.image || "/placeholder.svg"}
+                    src={slide.image}
                     alt="Collection Preview"
-                    width={600}
-                    height={600}
-                    className="object-cover"
+                    className="w-full h-auto object-cover"
                   />
                 </div>
               </div>
@@ -60,20 +72,29 @@ export default function HeroSlider() {
         ))}
       </div>
 
-      {/* Navigation Buttons */}
+      {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 text-black p-2 rounded-full transition-colors"
+        className="absolute left-4 top-1/2 -translate-y-1/2 text-white p-2 rounded-full transition-opacity hover:opacity-75"
+        aria-label="Previous slide"
       >
-        <ChevronLeft className="w-6 h-6" />
+        <ChevronLeft className="w-8 h-8 md:w-10 md:h-10 text-white" />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 text-black p-2 rounded-full transition-colors"
+        className="absolute right-4 top-1/2 -translate-y-1/2 text-white p-2 rounded-full transition-opacity hover:opacity-75"
+        aria-label="Next slide"
       >
-        <ChevronRight className="w-6 h-6" />
+        <ChevronRight className="w-8 h-8 md:w-10 md:h-10" />
       </button>
+
+      {/* Slide Progress Bar */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-16 h-1 bg-white/30">
+        <div 
+          className="h-full bg-white transition-all duration-500"
+          style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}
+        />
+      </div>
     </div>
   )
 }
-
