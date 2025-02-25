@@ -1,4 +1,5 @@
 import Layout from "../../layout/Layout"
+import C2A from "./C2A"
 import CategoryPick from "./CategoryPick"
 import HeroSlider from "./HeroSlider"
 import ProductList from "./ProductList"
@@ -12,6 +13,7 @@ export default function HomePage () {
       <CategoryPick/>
       <ProductList/>
       <Slider/>
+      <C2A/>
       </Layout> 
         </>
     )
