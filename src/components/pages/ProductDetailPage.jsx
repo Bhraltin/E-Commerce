@@ -1,6 +1,6 @@
 import Layout from "../layout/Layout";
 
-export default function About () {
+export default function ProductDetailPage () {
     return (
         <Layout>
             

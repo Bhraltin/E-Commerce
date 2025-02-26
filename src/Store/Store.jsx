@@ -1,14 +1,14 @@
 import { applyMiddleware, combineReducers, legacy_createStore as createStore } from 'redux';
 import {thunk} from "redux-thunk"
 import {logger} from "redux-logger"
-import ClientReducer from "./reducers/ClientReducer"
+import clientReducer from "./reducers/clientReducer"
 import ProductReducer from './reducers/ProductReducer';
 import ShoppingCartReducer from './reducers/ShoppingCardReducer';
 
 
 
 const rootReducer = combineReducers({
-    client: ClientReducer,
+    client: clientReducer,
     product: ProductReducer,
     shoppingCart: ShoppingCartReducer,
   })
