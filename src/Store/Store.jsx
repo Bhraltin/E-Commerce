@@ -19,4 +19,4 @@ const store = createStore(rootReducer,
   applyMiddleware (thunk, logger)
 );
 
-export default store;
+export { store as default };
