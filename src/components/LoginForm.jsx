@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form"
 import { useDispatch } from "react-redux"
-import { useHistory, useLocation, Link } from "react-router-dom"
+import { useHistory, Link } from "react-router-dom"
 import { loginUser } from "../Store/actions/clientAction"
 import { toast } from "react-toastify"
 import Layout from "./layout/Layout"
@@ -13,18 +13,24 @@ const LoginForm = () => {
   } = useForm()
   const dispatch = useDispatch()
   const history = useHistory()
-  const location = useLocation()
 
   const onSubmit = async (data) => {
     try {
-      await dispatch(loginUser(data))
-      const { from } = location.state || { from: { pathname: "/" } }
-      history.replace(from)
+      console.log("Attempting login with data:", data)
+      const result = await dispatch(loginUser(data))
+      console.log("Login result:", result)
+      
+      if (result.success) {
+        toast.success("Login successful!")
+        history.push("/")
+      } else {
+        toast.error(result.message || "Login failed")
+      }
     } catch (error) {
+      console.error("Login error:", error)
       toast.error("Login failed. Please check your credentials.")
     }
   }
-
   return (
     <Layout>
       <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">

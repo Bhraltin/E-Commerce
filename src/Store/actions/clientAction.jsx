@@ -8,15 +8,39 @@ export const setLanguage = (language) => ({ type: "SET_LANGUAGE", payload: langu
 
 export const loginUser = (credentials) => async (dispatch) => {
   try {
+    console.log('Sending login request with:', credentials);
     const response = await api.post("/login", credentials)
-    const user = response.data.user
-    user.avatarUrl = `https://www.gravatar.com/avatar/${md5(user.email.toLowerCase().trim())}?d=mp`
-    dispatch(setUser(user))
-    if (credentials.rememberMe) {
-      localStorage.setItem("token", response.data.token)
+    console.log('Raw API response:', response);
+    
+    // Check if we have a valid response
+    if (response.data) {
+      const user = response.data
+      // Only try to set avatar if email exists
+      if (user.email) {
+        user.avatarUrl = `https://www.gravatar.com/avatar/${md5(user.email.toLowerCase().trim())}?d=mp`
+      }
+      dispatch(setUser(user))
+      if (credentials.rememberMe) {
+        localStorage.setItem("token", response.data.token)
+      }
+      return { success: true, data: response.data };
     }
-    return response.data
+    return { success: false, message: 'Invalid response from server' };
   } catch (error) {
+    console.error("Login error:", error)
+    return { success: false, message: error.message };
+  }
+}
+
+export const logoutUser = () => async (dispatch) => {
+  try {
+    // Clear user data from Redux store
+    dispatch(setUser(null))
+    // Remove token from localStorage
+    localStorage.removeItem("token")
+    return true
+  } catch (error) {
+    console.error("Error during logout:", error)
     throw error
   }
 }
@@ -29,4 +53,3 @@ export const fetchRoles = () => async (dispatch) => {
     console.error("Error fetching roles:", error)
   }
 }
-

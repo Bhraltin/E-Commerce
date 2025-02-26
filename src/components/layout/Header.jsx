@@ -1,12 +1,18 @@
 import { useState } from "react"
 import { Link, useHistory } from "react-router-dom"
+import { useSelector, useDispatch } from "react-redux"
+import { logoutUser } from "../../Store/actions/clientAction"
 import { Menu, X, Phone, Mail, Search, ShoppingCart, Heart, ChevronDown, Instagram, Youtube, Facebook, Twitter } from 'lucide-react'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(true)
-  const history = useHistory();
-  const handleSignupClick = () => {
-    history.push("/signup")
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const isAuthenticated = useSelector((state) => state.client.isAuthenticated)
+
+  const handleLogout = () => {
+    dispatch(logoutUser())
+    history.push("/")
   }
 
   return (
@@ -83,13 +89,21 @@ export default function Header() {
 
             <div className="hidden md:flex items-center gap-1">
               <div className="flex items-center gap-1">
-              <Link to="/login" className="text-blue-600 hover:text-blue-700">
-                Login /
-              </Link>
-              <span className="text-gray-400"></span>
-              <Link to="/signup" className="text-blue-600 hover:text-blue-700">
-              Register
-              </Link>
+                {isAuthenticated ? (
+                  <button onClick={handleLogout} className="text-blue-600 hover:text-blue-700">
+                    Logout
+                  </button>
+                ) : (
+                  <>
+                    <Link to="/login" className="text-blue-600 hover:text-blue-700">
+                      Login /
+                    </Link>
+                    <span className="text-gray-400"></span>
+                    <Link to="/signup" className="text-blue-600 hover:text-blue-700">
+                      Register
+                    </Link>
+                  </>
+                )}
               </div>
               <button>
                 <Search className="w-5 h-5" />
@@ -131,9 +145,17 @@ export default function Header() {
                 </Link>
               </nav>
               <div className="flex items-center gap-4 mt-4 pt-4 border-t">
-                <Link to="/login" className="text-blue-600 hover:text-blue-700">
-                  Login / Register
-                </Link>
+                {isAuthenticated ? (
+                  <button onClick={handleLogout} className="text-blue-600 hover:text-blue-700">
+                    Logout
+                  </button>
+                ) : (
+                  <>
+                    <Link to="/login" className="text-blue-600 hover:text-blue-700">
+                      Login / Register
+                    </Link>
+                  </>
+                )}
                 <button>
                   <Search className="w-5 h-5" />
                 </button>
