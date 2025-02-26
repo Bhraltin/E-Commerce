@@ -1,7 +1,7 @@
 import { Route, Switch } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { verifyToken } from './store/actions/clientAction'
+
 import './App.css'
 
 import About from './components/pages/About'
@@ -11,6 +11,7 @@ import HomePage from './components/pages/home/HomePage'
 import ShopPage from './components/pages/shopPage/ShopPage'
 import LoginForm from "./components/LoginForm"
 import SignupForm from './components/pages/SignupForm'
+import { verifyToken } from './store/actions/clientAction'
 
 function App() {
   const dispatch = useDispatch();
