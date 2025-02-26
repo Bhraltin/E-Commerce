@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form"
 import { useDispatch } from "react-redux"
 import { useHistory, Link } from "react-router-dom"
-import { loginUser } from "../store/actions/clientAction"
+import { loginUser } from "../Store/actions/clientAction"
 import { toast } from "react-toastify"
 import Layout from "./layout/Layout"
 

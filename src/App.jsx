@@ -11,7 +11,7 @@ import HomePage from './components/pages/home/HomePage'
 import ShopPage from './components/pages/shop/ShopPage'
 import LoginForm from "./components/LoginForm"
 import SignupForm from './components/pages/SignupForm'
-import { verifyToken } from './store/actions/clientAction'
+import { verifyToken } from './Store/actions/clientAction'
 
 
 function App() {
