@@ -19,15 +19,21 @@ export const verifyToken = () => async (dispatch) => {
   try {
     const token = localStorage.getItem('token');
     if (!token) {
+      console.log('No token found');
       return { success: false };
     }
 
+    console.log('Setting token in headers:', token);
     // Set token in axios headers
     setAuthToken(token);
 
     // Verify token
+    console.log('Making verify request');
     const response = await api.get('/verify');
+    console.log('Verify response:', response);
+
     if (response.data) {
+      console.log('Token verified, setting user');
       const user = response.data
       // Only try to set avatar if email exists
       if (user.email) {
@@ -37,6 +43,7 @@ export const verifyToken = () => async (dispatch) => {
       return { success: true, data: response.data };
     }
 
+    console.log('Token verification failed, cleaning up');
     // If verification fails, clean up
     localStorage.removeItem('token');
     setAuthToken(null);
@@ -83,10 +90,10 @@ export const loginUser = (credentials) => async (dispatch) => {
 
 export const logoutUser = () => async (dispatch) => {
   try {
-    // Clear token from localStorage and axios headers
+   
     localStorage.removeItem('token');
     setAuthToken(null);
-    // Clear user data from Redux store
+
     dispatch(setUser(null));
     return { success: true };
   } catch (error) {

@@ -1,5 +1,5 @@
 import { Route, Switch } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { verifyToken } from './Store/actions/clientAction'
 import './App.css'
@@ -14,19 +14,29 @@ import SignupForm from './components/pages/SignupForm'
 
 function App() {
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Verify token on app load
     const checkAuth = async () => {
       try {
-        await dispatch(verifyToken());
+        const token = localStorage.getItem('token');
+        if (token) {
+          console.log('Found token, verifying...');
+          const result = await dispatch(verifyToken());
+          console.log('Token verification result:', result);
+        }
       } catch (error) {
         console.error('Auth verification failed:', error);
+      } finally {
+        setIsLoading(false);
       }
     };
     checkAuth();
   }, [dispatch]);
 
+  if (isLoading) {
+    return <div>Loading...</div>; 
+  }
   return (
     <>
       <Switch>
