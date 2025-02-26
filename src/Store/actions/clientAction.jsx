@@ -1,5 +1,5 @@
 import api from "../../components/axios"
-import md5 from "md5"
+
 
 export const setUser = (user) => ({ type: "SET_USER", payload: user })
 export const setRoles = (roles) => ({ type: "SET_ROLES", payload: roles })
@@ -37,7 +37,7 @@ export const verifyToken = () => async (dispatch) => {
       const user = response.data
       // Only try to set avatar if email exists
       if (user.email) {
-        user.avatarUrl = `https://www.gravatar.com/avatar/${md5(user.email.toLowerCase().trim())}?d=mp`
+        user.avatarUrl = `https://www.gravatar.com/avatar/${(user.email.toLowerCase().trim())}?d=mp`
       }
       dispatch(setUser(user));
       return { success: true, data: response.data };
@@ -68,7 +68,7 @@ export const loginUser = (credentials) => async (dispatch) => {
       const user = response.data
       // Only try to set avatar if email exists
       if (user.email) {
-        user.avatarUrl = `https://www.gravatar.com/avatar/${md5(user.email.toLowerCase().trim())}?d=mp`
+        user.avatarUrl = `https://www.gravatar.com/avatar/${(user.email.toLowerCase().trim())}?d=mp`
       }
       // Set token in axios headers
       if (response.data.token) {
