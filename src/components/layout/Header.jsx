@@ -8,11 +8,13 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(true)
   const dispatch = useDispatch()
   const history = useHistory()
-  const isAuthenticated = useSelector((state) => state.client.isAuthenticated)
+  const user = useSelector((state) => state.client.user)
 
-  const handleLogout = () => {
-    dispatch(logoutUser())
-    history.push("/")
+  const handleLogout = async () => {
+    const result = await dispatch(logoutUser())
+    if (result.success) {
+      history.push("/")
+    }
   }
 
   return (
@@ -89,7 +91,7 @@ export default function Header() {
 
             <div className="hidden md:flex items-center gap-1">
               <div className="flex items-center gap-1">
-                {isAuthenticated ? (
+                {user ? (
                   <button onClick={handleLogout} className="text-blue-600 hover:text-blue-700">
                     Logout
                   </button>
@@ -145,16 +147,14 @@ export default function Header() {
                 </Link>
               </nav>
               <div className="flex items-center gap-4 mt-4 pt-4 border-t">
-                {isAuthenticated ? (
+                {user ? (
                   <button onClick={handleLogout} className="text-blue-600 hover:text-blue-700">
                     Logout
                   </button>
                 ) : (
-                  <>
-                    <Link to="/login" className="text-blue-600 hover:text-blue-700">
-                      Login / Register
-                    </Link>
-                  </>
+                  <Link to="/login" className="text-blue-600 hover:text-blue-700">
+                    Login / Register
+                  </Link>
                 )}
                 <button>
                   <Search className="w-5 h-5" />
