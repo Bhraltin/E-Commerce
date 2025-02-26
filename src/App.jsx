@@ -8,7 +8,7 @@ import About from './components/pages/About'
 import Blog from './components/pages/Blog'
 import Contact from './components/pages/Contact'
 import HomePage from './components/pages/home/HomePage'
-import ShopPage from './components/pages/shopPage/ShopPage'
+import ShopPage from './components/pages/shop/ShopPage'
 import LoginForm from "./components/LoginForm"
 import SignupForm from './components/pages/SignupForm'
 import { verifyToken } from './store/actions/clientAction'
