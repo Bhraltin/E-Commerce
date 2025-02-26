@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ProductCard from '../../pages/home/ProductCard';
+import ProductCard from '../home/ProductCard';
 
 const ShopList = () => {
   const [currentPage, setCurrentPage] = useState(1);

@@ -1,14 +1,14 @@
 import { Route, Switch } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { verifyToken } from './Store/actions/clientAction'
+import { verifyToken } from './store/actions/clientAction'
 import './App.css'
 
 import About from './components/pages/About'
 import Blog from './components/pages/Blog'
 import Contact from './components/pages/Contact'
 import HomePage from './components/pages/home/HomePage'
-import ShopPage from './components/pages/ShopPage/ShopPage'
+import ShopPage from './components/pages/shopPage/ShopPage'
 import LoginForm from "./components/LoginForm"
 import SignupForm from './components/pages/SignupForm'
 

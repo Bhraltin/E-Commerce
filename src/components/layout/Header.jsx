@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Link, useHistory } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
-import { logoutUser } from "../../Store/actions/clientAction"
+import { logoutUser } from "../../store/actions/clientAction"
 import { Menu, X, Phone, Mail, Search, ShoppingCart, Heart, ChevronDown, Instagram, Youtube, Facebook, Twitter } from 'lucide-react'
 
 export default function Header() {
