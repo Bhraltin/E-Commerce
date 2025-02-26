@@ -68,7 +68,7 @@ export const loginUser = (credentials) => async (dispatch) => {
       const user = response.data
       // Only try to set avatar if email exists
       if (user.email) {
-        user.avatarUrl = `https://www.gravatar.com/avatar/${md5(user.email.toLowerCase().trim())}?d=mp`
+        user.avatarUrl = `https://www.gravatar.com/avatar/${(user.email.toLowerCase().trim())}?d=mp`
       }
       // Set token in axios headers
       if (response.data.token) {

@@ -13,6 +13,7 @@ import LoginForm from "./components/LoginForm"
 import SignupForm from './components/pages/SignupForm'
 import { verifyToken } from './store/actions/clientAction'
 
+
 function App() {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
