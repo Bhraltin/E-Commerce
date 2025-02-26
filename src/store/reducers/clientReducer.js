@@ -7,7 +7,7 @@ const initialState = {
     language: "en",
   }
   
-  const ClientReducer = (state = initialState, action) => {
+  const clientReducer = (state = initialState, action) => {
     switch (action.type) {
       case "SET_USER":
         return { ...state, user: action.payload }
@@ -22,6 +22,6 @@ const initialState = {
     }
   }
   
-  export default ClientReducer
+  export default clientReducer
   
   
