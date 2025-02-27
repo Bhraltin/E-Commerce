@@ -3,6 +3,7 @@ import {Link} from "react-router-dom"
 import { ChevronRight } from "lucide-react";
 import ProductDetailCard from "./ProductDetailCard";
 import ProductDescription from "./ProductDescription";
+import ProductBestseller from "./ProductBestseller";
 
 
 export default function ProductDetailPage () {
@@ -48,6 +49,7 @@ export default function ProductDetailPage () {
       </div>
       <ProductDetailCard product={product}/>
       <ProductDescription product={product}/>
+      <ProductBestseller/>
         </Layout>
     )
 }
