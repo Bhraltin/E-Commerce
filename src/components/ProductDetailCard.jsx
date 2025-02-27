@@ -18,9 +18,10 @@ const product = {
     ],
   }
 
-
 export default function ProductDetailCard ({product}) {
-
+    const [selectedColor, setSelectedColor] = useState("blue")
+    const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  
 
 
 
