@@ -4,7 +4,7 @@ const ProductCard = ({ id, image, title, department, price, oldPrice, colors }) 
         {/* Image Container */}
         <div className="aspect-square overflow-hidden bg-gray-100 mb-4">
           <img
-            src={image}
+         
             alt={title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
