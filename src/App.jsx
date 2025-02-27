@@ -12,6 +12,7 @@ import ShopPage from './components/pages/shop/ShopPage'
 import LoginForm from "./components/LoginForm"
 import SignupForm from './components/pages/SignupForm'
 import { verifyToken } from './store/actions/clientAction'
+import ProductDetailPage from "./components/productDetail/ProductDetailPage"
 
 
 function App() {
@@ -53,6 +54,9 @@ function App() {
         </Route>
         <Route path="/shop">
           <ShopPage />
+        </Route>
+        <Route path="/product/:id">
+        <ProductDetailPage/> 
         </Route>
         <Route path="/about">
           <About/>
