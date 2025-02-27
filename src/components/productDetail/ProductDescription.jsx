@@ -78,36 +78,7 @@ const ProductDescription = ({ productData }) => {
               </section>
 
               {/* Second Section */}
-              <section>
-                <h3 className="text-xl font-bold mb-4">the quick fox jumps over</h3>
-                <p className="text-gray-600 mb-4">
-                  Met minim Mollie non desert Alamo est sit cliquey dolor do met sent. RELIT official consequent door
-                  ENIM RELIT Mollie. Excitation venial consequent sent nostrum met.
-                </p>
-              </section>
-
-              {/* Third Section */}
-              <section>
-                <h3 className="text-xl font-bold mb-4">the quick fox jumps over</h3>
-                <p className="text-gray-600 mb-4">
-                  Met minim Mollie non desert Alamo est sit cliquey dolor do met sent. RELIT official consequent door
-                  ENIM RELIT Mollie. Excitation venial consequent sent nostrum met.
-                </p>
-                <ul className="space-y-2">
-                  <li className="flex items-center text-gray-600">
-                    <span className="mr-2">→</span>
-                    the quick fox jumps over the lazy dog
-                  </li>
-                  <li className="flex items-center text-gray-600">
-                    <span className="mr-2">→</span>
-                    the quick fox jumps over the lazy dog
-                  </li>
-                  <li className="flex items-center text-gray-600">
-                    <span className="mr-2">→</span>
-                    the quick fox jumps over the lazy dog
-                  </li>
-                </ul>
-              </section>
+              
             </div>
           </div>
         )}
