@@ -1,8 +1,12 @@
 import React from 'react';
-
-const ProductCard = ({ image, title, department, price, oldPrice, colors = [] }) => {
+import { useHistory } from 'react-router-dom';
+const ProductCard = ({id, image, title, department, price, oldPrice, colors = [] }) => {
+    const history = useHistory();
+    const handleClick = () => {
+        history.push(`/product/${id}`)
+    }
     return (
-        <div className="group">
+        <div className="group" onClick={handleClick}>
             {/* Image Container */}
             <div className="relative overflow-hidden mb-4">
                 <img 
