@@ -12,7 +12,7 @@ import ShopPage from './components/pages/shop/ShopPage'
 import LoginForm from "./components/LoginForm"
 import SignupForm from './components/pages/SignupForm'
 import { verifyToken } from './store/actions/clientAction'
-import ProductDetailPage from "./components/pages/ProductDetailPage"
+import ProductDetailPage from "./components/productDetail/ProductDetailPage"
 
 
 function App() {
