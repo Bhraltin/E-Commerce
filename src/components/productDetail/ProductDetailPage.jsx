@@ -2,6 +2,7 @@ import Layout from "../layout/Layout";
 import {Link} from "react-router-dom"
 import { ChevronRight } from "lucide-react";
 import ProductDetailCard from "./ProductDetailCard";
+import ProductDescription from "./ProductDescription";
 
 
 export default function ProductDetailPage () {
@@ -46,6 +47,7 @@ export default function ProductDetailPage () {
       </div>
       </div>
       <ProductDetailCard product={product}/>
+      <ProductDescription product={product}/>
         </Layout>
     )
 }
