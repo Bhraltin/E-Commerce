@@ -4,6 +4,7 @@ import { ChevronRight } from "lucide-react";
 import ProductDetailCard from "./ProductDetailCard";
 import ProductDescription from "./ProductDescription";
 import ProductBestseller from "./ProductBestseller";
+import Logo from "../pages/shop/Logo";
 
 
 export default function ProductDetailPage () {
@@ -50,6 +51,7 @@ export default function ProductDetailPage () {
       <ProductDetailCard product={product}/>
       <ProductDescription product={product}/>
       <ProductBestseller/>
+      <Logo/>
         </Layout>
     )
 }
