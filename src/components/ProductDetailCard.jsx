@@ -22,7 +22,17 @@ export default function ProductDetailCard ({product}) {
     const [selectedColor, setSelectedColor] = useState("blue")
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
   
-
+    const handlePrevImage = () => {
+        setCurrentImageIndex((prev) => (prev === 0 ? product.images.length - 1 : prev - 1))
+      }
+    
+      const handleNextImage = () => {
+        setCurrentImageIndex((prev) => (prev === product.images.length - 1 ? 0 : prev + 1))
+      }
+    
+      const handleThumbnailClick = (index) => {
+        setCurrentImageIndex(index)
+      }
 
 
     return (
