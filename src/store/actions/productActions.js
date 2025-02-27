@@ -19,6 +19,39 @@ const mockProducts = {
     }))
 };
 
+const filterMockProducts = (params) => {
+    let filteredProducts = [...mockProducts.products];
+
+    // Apply category filter
+    if (params.category) {
+        filteredProducts = filteredProducts.filter(p => p.category.id === parseInt(params.category));
+    }
+
+    // Apply text filter
+    if (params.filter) {
+        const searchTerm = params.filter.toLowerCase();
+        filteredProducts = filteredProducts.filter(p => 
+            p.name.toLowerCase().includes(searchTerm) || 
+            p.description.toLowerCase().includes(searchTerm)
+        );
+    }
+
+    // Apply sorting
+    if (params.sort) {
+        const [field, direction] = params.sort.split(':');
+        filteredProducts.sort((a, b) => {
+            const aValue = field === 'price' ? a.price : a.rating;
+            const bValue = field === 'price' ? b.price : b.rating;
+            return direction === 'asc' ? aValue - bValue : bValue - aValue;
+        });
+    }
+
+    return {
+        total: filteredProducts.length,
+        products: filteredProducts
+    };
+};
+
 export const fetchProducts = (params = {}) => async (dispatch) => {
     try {
         dispatch({ type: 'FETCH_PRODUCTS_START' });
@@ -27,13 +60,15 @@ export const fetchProducts = (params = {}) => async (dispatch) => {
         await new Promise(resolve => setTimeout(resolve, 800));
 
         // For testing with mock data
+        const filteredData = filterMockProducts(params);
         dispatch({
             type: 'FETCH_PRODUCTS_SUCCESS',
-            payload: mockProducts
+            payload: filteredData
         });
 
         // When API is ready, uncomment this:
-        // const response = await axios.get('/products', { params });
+        // const queryString = new URLSearchParams(params).toString();
+        // const response = await axios.get(`/products${queryString ? `?${queryString}` : ''}`);
         // dispatch({
         //     type: 'FETCH_PRODUCTS_SUCCESS',
         //     payload: response.data

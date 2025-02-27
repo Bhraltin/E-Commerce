@@ -3,13 +3,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../../../store/actions/productActions';
 import ProductCard from '../../productDetail/ProductCard';
 
-const ProductList = () => {
+const ProductList = ({ categoryId, filter, sort }) => {
     const dispatch = useDispatch();
     const { products, loading, error, total } = useSelector(state => state.product);
 
     useEffect(() => {
-        dispatch(fetchProducts());
-    }, [dispatch]);
+        const params = {};
+        if (categoryId) params.category = categoryId;
+        if (filter) params.filter = filter;
+        if (sort) params.sort = sort;
+        
+        dispatch(fetchProducts(params));
+    }, [dispatch, categoryId, filter, sort]);
 
     if (loading) {
         return (
@@ -34,20 +39,26 @@ const ProductList = () => {
                 <span className="text-gray-600">Total Products: {total}</span>
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {products.map((product) => (
-                    <ProductCard
-                        key={product.id}
-                        id={product.id}
-                        image={product.imageUrl}
-                        title={product.name}
-                        department={product.category.name}
-                        price={product.price}
-                        oldPrice={product.oldPrice}
-                        colors={[]}  // Add colors if available in your data
-                    />
-                ))}
-            </div>
+            {products.length === 0 ? (
+                <div className="text-center text-gray-600 py-8">
+                    No products found matching your criteria.
+                </div>
+            ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    {products.map((product) => (
+                        <ProductCard
+                            key={product.id}
+                            id={product.id}
+                            image={product.imageUrl}
+                            title={product.name}
+                            department={product.category.name}
+                            price={product.price}
+                            oldPrice={product.oldPrice}
+                            colors={[]}  // Add colors if available in your data
+                        />
+                    ))}
+                </div>
+            )}
         </div>
     );
 };
