@@ -1,0 +1,68 @@
+export const bestsellersData = [
+    {
+      id: 1,
+      title: "Graphic Design",
+      department: "English Department",
+      originalPrice: 16.48,
+      salePrice: 6.48,
+      image: "/placeholder.svg?height=400&width=400",
+    },
+    {
+      id: 2,
+      title: "Graphic Design",
+      department: "English Department",
+      originalPrice: 16.48,
+      salePrice: 6.48,
+      image: "/placeholder.svg?height=400&width=400",
+    },
+    {
+      id: 3,
+      title: "Graphic Design",
+      department: "English Department",
+      originalPrice: 16.48,
+      salePrice: 6.48,
+      image: "/placeholder.svg?height=400&width=400",
+    },
+    {
+      id: 4,
+      title: "Graphic Design",
+      department: "English Department",
+      originalPrice: 16.48,
+      salePrice: 6.48,
+      image: "/placeholder.svg?height=400&width=400",
+    },
+    {
+      id: 5,
+      title: "Graphic Design",
+      department: "English Department",
+      originalPrice: 16.48,
+      salePrice: 6.48,
+      image: "/placeholder.svg?height=400&width=400",
+    },
+    {
+      id: 6,
+      title: "Graphic Design",
+      department: "English Department",
+      originalPrice: 16.48,
+      salePrice: 6.48,
+      image: "/placeholder.svg?height=400&width=400",
+    },
+    {
+      id: 7,
+      title: "Graphic Design",
+      department: "English Department",
+      originalPrice: 16.48,
+      salePrice: 6.48,
+      image: "/placeholder.svg?height=400&width=400",
+    },
+    {
+      id: 8,
+      title: "Graphic Design",
+      department: "English Department",
+      originalPrice: 16.48,
+      salePrice: 6.48,
+      image: "/placeholder.svg?height=400&width=400",
+    },
+  ]
+  
+  
