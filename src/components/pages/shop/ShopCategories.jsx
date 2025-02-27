@@ -1,88 +1,61 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const ShopCategories = () => {
-  const categories = [
-    {
-      id: 1,
-      title: "CLOTHS",
-      items: 5,
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/desktop-shop-cards-18-OAk5GOUHFhi1U8I7MT7ZC0Vsdt6lgA.png",
-      color: "bg-gray-800",
-    },
-    {
-      id: 2,
-      title: "CLOTHS",
-      items: 5,
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/desktop-shop-cards-18-OAk5GOUHFhi1U8I7MT7ZC0Vsdt6lgA.png",
-      color: "bg-cyan-500",
-    },
-    {
-      id: 3,
-      title: "CLOTHS",
-      items: 5,
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/desktop-shop-cards-18-OAk5GOUHFhi1U8I7MT7ZC0Vsdt6lgA.png",
-      color: "bg-rose-300",
-    },
-    {
-      id: 4,
-      title: "CLOTHS",
-      items: 5,
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/desktop-shop-cards-18-OAk5GOUHFhi1U8I7MT7ZC0Vsdt6lgA.png",
-      color: "bg-rose-400",
-    },
-    {
-      id: 5,
-      title: "CLOTHS",
-      items: 5,
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/desktop-shop-cards-18-OAk5GOUHFhi1U8I7MT7ZC0Vsdt6lgA.png",
-      color: "bg-fuchsia-400",
-    },
-  ];
+  const { categories, loading, error } = useSelector(state => state.category);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-[400px]">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-900"></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="text-center text-red-600 py-8">
+        Error loading categories. Please try again later.
+      </div>
+    );
+  }
 
   return (
-    <div className="container px-2 py-2">
-      {/* Scrollable container for desktop */}
-      <div className="relative">
-        <div className="flex flex-col md:flex-row gap-3 md:overflow-x-auto md:scroll-smooth md:snap-x md:snap-mandatory no-scrollbar">
-          {categories.map((category) => (
-            <Link
-              key={category.id}
-              to={`/shop/${category.title.toLowerCase()}`}
-              className="relative group w-full md:w-52 lg:w-64 flex-shrink-0 snap-start"
-            >
-              <div className={`relative aspect-square md:aspect-[4/5] overflow-hidden rounded-lg ${category.color}`}>
-                {/* Image */}
-                <img
-                  src={category.image || "/placeholder.svg"}
-                  alt={category.title}
-                  className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
-                />
-                
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-black bg-opacity-20 transition-opacity duration-300 group-hover:bg-opacity-30" />
-                
-                {/* Text Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-3 text-white">
-                  <h3 className="text-base font-bold mb-0.5">{category.title}</h3>
-                  <p className="text-xs opacity-90">{category.items} Items</p>
-                </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-6">
+      {categories.map((category) => (
+        <Link
+          key={category.id}
+          to={`/shop/${category.gender}/${category.name.toLowerCase()}/${category.id}`}
+          className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+        >
+          <div className="aspect-square overflow-hidden">
+            <img
+              src={category.imageUrl}
+              alt={category.name}
+              className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+            />
+            <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-30 transition-opacity" />
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+              <h3 className="text-2xl font-bold mb-2">{category.name}</h3>
+              <div className="flex items-center">
+                {[...Array(5)].map((_, index) => (
+                  <svg
+                    key={index}
+                    className={`w-5 h-5 ${
+                      index < Math.floor(category.rating) ? 'text-yellow-400' : 'text-gray-300'
+                    }`}
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
               </div>
-            </Link>
-          ))}
-        </div>
-      </div>
-
-     
-      <style jsx>{`
-        .no-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-        .no-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}</style>
+            </div>
+          </div>
+        </Link>
+      ))}
     </div>
   );
 };
