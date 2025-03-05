@@ -1,19 +1,19 @@
-import { Route, Switch } from 'react-router-dom'
-import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { Route, Switch } from 'react-router-dom';
+import ProductDetailPage from './components/productDetail/ProductDetailPage'; // Import ProductDetailPage component
 
-import './App.css'
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
-import About from './components/pages/About'
-import Blog from './components/pages/Blog'
-import Contact from './components/pages/Contact'
-import HomePage from './components/pages/home/HomePage'
-import ShopPage from './components/pages/shop/ShopPage'
-import LoginForm from "./components/LoginForm"
-import SignupForm from './components/pages/SignupForm'
-import { verifyToken } from './store/actions/clientAction'
-import ProductDetailPage from "./components/productDetail/ProductDetailPage"
+import './App.css';
 
+import About from './components/pages/About';
+import Blog from './components/pages/Blog';
+import Contact from './components/pages/Contact';
+import HomePage from './components/pages/home/HomePage';
+import ShopPage from './components/pages/shop/ShopPage';
+import LoginForm from "./components/LoginForm";
+import SignupForm from './components/pages/SignupForm';
+import { verifyToken } from './store/actions/clientAction';
 
 function App() {
   const dispatch = useDispatch();
@@ -40,9 +40,11 @@ function App() {
   if (isLoading) {
     return <div>Loading...</div>; 
   }
+  
   return (
     <>
       <Switch>
+        <Route path="/product/:id" component={ProductDetailPage} /> {/* Add route for ProductDetailPage */}
         <Route exact path="/">
           <HomePage />
         </Route>
@@ -55,9 +57,6 @@ function App() {
         <Route path="/shop">
           <ShopPage />
         </Route>
-        <Route path="/product/:id">
-        <ProductDetailPage/> 
-        </Route>
         <Route path="/about">
           <About/>
         </Route>
@@ -69,7 +68,7 @@ function App() {
         </Route>
       </Switch>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

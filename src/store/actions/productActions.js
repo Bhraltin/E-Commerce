@@ -60,9 +60,6 @@ const filterMockProducts = (params) => {
     return {
         total: filteredProducts.length,
         products: paginatedProducts, // Return paginated products
-
-        total: filteredProducts.length,
-        products: filteredProducts
     };
 };
 
@@ -82,14 +79,6 @@ export const fetchProducts = (params = {}) => async (dispatch) => {
             type: 'FETCH_PRODUCTS_SUCCESS',
             payload: filteredData
         });
-
-        // When API is ready, uncomment this:
-        // const queryString = new URLSearchParams(params).toString();
-        // const response = await axios.get(`/products${queryString ? `?${queryString}` : ''}`);
-        // dispatch({
-        //     type: 'FETCH_PRODUCTS_SUCCESS',
-        //     payload: response.data
-        // });
     } catch (error) {
         dispatch({
             type: 'FETCH_PRODUCTS_FAIL',
@@ -98,6 +87,7 @@ export const fetchProducts = (params = {}) => async (dispatch) => {
     }
 };
 
+// New action to fetch product by ID
 export const fetchProductById = (id) => async (dispatch) => {
     try {
         dispatch({ type: 'FETCH_PRODUCT_BY_ID_START' });
@@ -116,13 +106,6 @@ export const fetchProductById = (id) => async (dispatch) => {
             type: 'FETCH_PRODUCT_BY_ID_SUCCESS',
             payload: product
         });
-
-        // When API is ready, uncomment this:
-        // const response = await axios.get(`/products/${id}`);
-        // dispatch({
-        //     type: 'FETCH_PRODUCT_BY_ID_SUCCESS',
-        //     payload: response.data
-        // });
     } catch (error) {
         dispatch({
             type: 'FETCH_PRODUCT_BY_ID_FAIL',
