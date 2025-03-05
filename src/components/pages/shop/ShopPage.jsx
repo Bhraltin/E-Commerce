@@ -112,7 +112,7 @@ export default function ShopPage() {
 
                 {/* Categories Section */}
                 <section className="py-8">
-                    <ShopCategories />
+           <ShopCategories/>
                 </section>
 
                 {/* Products Section */}

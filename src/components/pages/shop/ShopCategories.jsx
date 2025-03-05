@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 
 const ShopCategories = () => {
   const { categories, loading, error } = useSelector(state => state.category);
+  console.log('Categories:', categories, 'Loading:', loading, 'Error:', error);
+
 
   if (loading) {
     return (
