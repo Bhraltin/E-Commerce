@@ -1,57 +1,87 @@
-import Layout from "../layout/Layout";
-import {Link} from "react-router-dom"
+import { useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { ChevronRight } from "lucide-react";
+import Layout from "../layout/Layout";
 import ProductDetailCard from "./ProductDetailCard";
 import ProductDescription from "./ProductDescription";
 import ProductBestseller from "./ProductBestseller";
 import Logo from "../pages/shop/Logo";
+import { fetchProductById } from "../../store/actions/productActions";
 
+export default function ProductDetailPage() {
+    const { id } = useParams();
+    const dispatch = useDispatch();
+    const { product, loading, error } = useSelector((state) => state.product.currentProduct || {});
 
-export default function ProductDetailPage () {
+    useEffect(() => {
+        if (id) {
+            dispatch(fetchProductById(id));
+        }
+    }, [dispatch, id]);
 
+    if (loading) {
+        return (
+            <Layout>
+                <div className="flex justify-center items-center min-h-screen">
+                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-900"></div>
+                </div>
+            </Layout>
+        );
+    }
 
-    const product = {
-        id: 1,
-        name: "Floating Phone",
-        price: 1139.33,
-        rating: 4,
-        reviewCount: 10,
-        description:
-          "Met minim Mollie non desert Alamo est sit cliquey dolor do met sent. RELIT official consequent door ENIM RELIT Mollie. Excitation venial consequent sent nostrum met.",
-        availability: "In Stock",
-        colors: ["blue", "green", "orange", "navy"],
-        images: [
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/desktop-product-cards-42-OzRo0nlzRCw8Tebp0kjm0HT5QVAEL2.png",
-          "/placeholder.svg?height=400&width=400",
-          "/placeholder.svg?height=400&width=400",
-        ],
-      }
+    if (error) {
+        return (
+            <Layout>
+                <div className="flex justify-center items-center min-h-screen">
+                    <div className="text-red-600">Error loading product: {error}</div>
+                </div>
+            </Layout>
+        );
+    }
+
+    if (!product) {
+        return (
+            <Layout>
+                <div className="flex justify-center items-center min-h-screen">
+                    <div className="text-gray-600">Product not found</div>
+                </div>
+            </Layout>
+        );
+    }
 
     return (
         <Layout>
-            <div className=" bg-gray-50">
-      {/* ProductDetailPage Header Section */}
-      <div className="bg-gray-100">
-        <div className="container mx-auto px-4 py-8">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <nav className="flex items-center space-x-2 text-sm md:text-base">
-              <Link 
-                to="/" 
-                className="text-gray-900 hover:text-blue-600 transition-colors"
-              >
-                Home
-              </Link>
-              <ChevronRight className="w-4 h-4 text-gray-400" />
-              <span className="text-gray-500">Shop</span>
-            </nav>
-          </div>
-        </div>
-      </div>
-      </div>
-      <ProductDetailCard product={product}/>
-      <ProductDescription product={product}/>
-      <ProductBestseller/>
-      <Logo/>
+            <div className="bg-gray-50">
+                {/* ProductDetailPage Header Section */}
+                <div className="bg-gray-100">
+                    <div className="container mx-auto px-4 py-8">
+                        <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+                            <nav className="flex items-center space-x-2 text-sm md:text-base">
+                                <Link 
+                                    to="/" 
+                                    className="text-gray-900 hover:text-blue-600 transition-colors"
+                                >
+                                    Home
+                                </Link>
+                                <ChevronRight className="w-4 h-4 text-gray-400" />
+                                <Link
+                                    to="/shop"
+                                    className="text-gray-900 hover:text-blue-600 transition-colors"
+                                >
+                                    Shop
+                                </Link>
+                                <ChevronRight className="w-4 h-4 text-gray-400" />
+                                <span className="text-gray-500">{product.name}</span>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ProductDetailCard product={product} />
+            <ProductDescription product={product} />
+            <ProductBestseller />
+            <Logo />
         </Layout>
-    )
+    );
 }

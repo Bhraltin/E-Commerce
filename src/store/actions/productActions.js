@@ -15,7 +15,15 @@ const mockProducts = {
             id: Math.floor(Math.random() * 5) + 1,
             name: ['Ayakkabi', 'Elbise', 'Gomlek', 'Pantolon', 'Canta'][Math.floor(Math.random() * 5)],
             gender: Math.random() > 0.5 ? 'kadin' : 'erkek'
-        }
+        },
+        availability: "In Stock",
+        colors: ["blue", "green", "orange", "navy"],
+        images: [
+            `/images/products/product-${index + 1}.jpg`,
+            `/images/products/product-${index + 1}-2.jpg`,
+            `/images/products/product-${index + 1}-3.jpg`,
+        ],
+        reviewCount: Math.floor(Math.random() * 100) + 10
     }))
 };
 
@@ -76,6 +84,39 @@ export const fetchProducts = (params = {}) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: 'FETCH_PRODUCTS_FAIL',
+            payload: error.message
+        });
+    }
+};
+
+export const fetchProductById = (id) => async (dispatch) => {
+    try {
+        dispatch({ type: 'FETCH_PRODUCT_BY_ID_START' });
+
+        // Simulate API delay
+        await new Promise(resolve => setTimeout(resolve, 500));
+
+        // For testing with mock data
+        const product = mockProducts.products.find(p => p.id === parseInt(id));
+        
+        if (!product) {
+            throw new Error('Product not found');
+        }
+
+        dispatch({
+            type: 'FETCH_PRODUCT_BY_ID_SUCCESS',
+            payload: product
+        });
+
+        // When API is ready, uncomment this:
+        // const response = await axios.get(`/products/${id}`);
+        // dispatch({
+        //     type: 'FETCH_PRODUCT_BY_ID_SUCCESS',
+        //     payload: response.data
+        // });
+    } catch (error) {
+        dispatch({
+            type: 'FETCH_PRODUCT_BY_ID_FAIL',
             payload: error.message
         });
     }

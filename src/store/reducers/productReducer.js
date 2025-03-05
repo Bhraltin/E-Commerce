@@ -2,7 +2,12 @@ const initialState = {
     products: [],
     total: 0,
     loading: false,
-    error: null
+    error: null,
+    currentProduct: {
+        product: null,
+        loading: false,
+        error: null
+    }
 };
 
 const productReducer = (state = initialState, action) => {
@@ -28,6 +33,33 @@ const productReducer = (state = initialState, action) => {
                 error: action.payload,
                 products: [],
                 total: 0
+            };
+        case 'FETCH_PRODUCT_BY_ID_START':
+            return {
+                ...state,
+                currentProduct: {
+                    product: null,
+                    loading: true,
+                    error: null
+                }
+            };
+        case 'FETCH_PRODUCT_BY_ID_SUCCESS':
+            return {
+                ...state,
+                currentProduct: {
+                    product: action.payload,
+                    loading: false,
+                    error: null
+                }
+            };
+        case 'FETCH_PRODUCT_BY_ID_FAIL':
+            return {
+                ...state,
+                currentProduct: {
+                    product: null,
+                    loading: false,
+                    error: action.payload
+                }
             };
         default:
             return state;
