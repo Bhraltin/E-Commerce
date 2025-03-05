@@ -1,11 +1,15 @@
-import { useState, useEffect } from "react"
+import { useState } from "react";
+import BasketDetails from "../BasketDetails"; // Import the BasketDetails component
+
 import { Link, useHistory } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { logoutUser } from "../../store/actions/clientAction"
 import { Phone, Mail, Search, ShoppingCart, Heart, Instagram, Youtube, Facebook, Twitter } from 'lucide-react'
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(true)
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const [isBasketVisible, setIsBasketVisible] = useState(false); // State for basket visibility
+
   const dispatch = useDispatch()
   const history = useHistory()
   const user = useSelector((state) => state.client.user)
@@ -93,7 +97,7 @@ export default function Header() {
               <button>
                 <Search className="w-5 h-5" />
               </button>
-              <button className="relative">
+              <button className="relative" onClick={() => setIsBasketVisible(!isBasketVisible)}> {/* Toggle basket visibility */}
                 <ShoppingCart className="w-5 h-5" />
                 <span className="absolute -top-2 -right-2 bg-blue-600 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
                   1
@@ -109,55 +113,10 @@ export default function Header() {
           </div>
         </div>
       </nav>
-      {isMenuOpen && (
-        <div className="md:hidden py-4">
-          <nav className="flex flex-col gap-4">
-            <Link to="/" className="text-gray-300 hover:text-blue-600">
-              Home
-            </Link>
-            <Link to="/shop" className="hover:text-blue-600">
-              Shop
-            </Link>
-            <Link to="/about" className="hover:text-blue-600">
-              About
-            </Link>
-            <Link to="/blog" className="hover:text-blue-600">
-              Blog
-            </Link>
-            <Link to="/contact" className="hover:text-blue-600">
-              Contact
-            </Link>
-            <Link to="/pages" className="hover:text-blue-600">
-              Pages
-            </Link>
-          </nav>
-          <div className="flex items-center gap-4 mt-4 pt-4 border-t">
-            {user ? (
-              <button onClick={handleLogout} className="text-blue-600 hover:text-blue-700">
-                Logout
-              </button>
-            ) : (
-              <Link to="/login" className="text-blue-600 hover:text-blue-700">
-                Login / Register
-              </Link>
-            )}
-            <button>
-              <Search className="w-5 h-5" />
-            </button>
-            <button className="relative">
-              <ShoppingCart className="w-5 h-5" />
-              <span className="absolute -top-2 -right-2 bg-blue-600 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
-                1
-              </span>
-            </button>
-            <button className="relative">
-              <Heart className="w-5 h-5" />
-              <span className="absolute -top-2 -right-2 bg-blue-600 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
-                1
-              </span>
-            </button>
-          </div>
-        </div>
+      {isMenuOpen && ( 
+        <>
+          <BasketDetails isVisible={isBasketVisible} onClose={() => setIsBasketVisible(false)} /> {/* Render BasketDetails */}
+        </>
       )}
     </header>
   );

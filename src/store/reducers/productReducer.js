@@ -7,8 +7,10 @@ const initialState = {
         product: null,
         loading: false,
         error: null
-    }
+    },
+    cart: [] // Initialize cart as an empty array
 };
+
 
 const productReducer = (state = initialState, action) => {
     switch (action.type) {
