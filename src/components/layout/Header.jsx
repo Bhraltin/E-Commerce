@@ -2,19 +2,13 @@ import { useState, useEffect } from "react"
 import { Link, useHistory } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { logoutUser } from "../../store/actions/clientAction"
-import { fetchCategories } from "../../store/actions/categoryActions"
-import { Menu, X, Phone, Mail, Search, ShoppingCart, Heart, ChevronDown, Instagram, Youtube, Facebook, Twitter } from 'lucide-react'
-import CategoryDropdown from "./CategoryDropdown"
+import { Phone, Mail, Search, ShoppingCart, Heart, Instagram, Youtube, Facebook, Twitter } from 'lucide-react'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(true)
   const dispatch = useDispatch()
   const history = useHistory()
   const user = useSelector((state) => state.client.user)
-
-  useEffect(() => {
-    dispatch(fetchCategories());
-  }, [dispatch]);
 
   const handleLogout = async () => {
     const result = await dispatch(logoutUser())
@@ -73,7 +67,6 @@ export default function Header() {
 
             <div className="hidden md:flex items-center space-x-4">
               <Link to="/" className="text-gray-600 hover:text-gray-900">Home</Link>
-              <CategoryDropdown />
               <Link to="/shop" className="text-gray-600 hover:text-gray-900">Shop</Link>
               <Link to="/about" className="text-gray-600 hover:text-gray-900">About</Link>
               <Link to="/contact" className="text-gray-600 hover:text-gray-900">Contact</Link>
