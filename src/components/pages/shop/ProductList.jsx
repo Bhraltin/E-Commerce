@@ -6,7 +6,7 @@ import ProductCard from '../../productDetail/ProductCard';
 const ProductList = ({ categoryId, filter, sort }) => {
     const dispatch = useDispatch();
     const { products, loading, error, total } = useSelector(state => state.product);
-    const [limit, setLimit] = useState(10);
+    const [limit, setLimit] = useState(25);
     const [offset, setOffset] = useState(0);
     console.log('Products:', products, 'Loading:', loading, 'Error:', error);
 
@@ -59,7 +59,7 @@ const ProductList = ({ categoryId, filter, sort }) => {
             {products.length === 0 ? (
                 <div className="text-center text-gray-600 py-8" key={total}>
                     <button onClick={handlePreviousPage} disabled={offset === 0}>Previous</button>
-                    <button onClick={handleNextPage}>Next</button>
+                    <button onClick={handleNextPage} disabled={offset + limit >= total}>Next</button>
                     No products found matching your criteria.
                 </div>
             ) : (

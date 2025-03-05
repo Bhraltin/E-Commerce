@@ -28,6 +28,8 @@ const mockProducts = {
 };
 
 const filterMockProducts = (params) => {
+    const { limit = 25, offset = 0 } = params; // Set default values for limit and offset
+
     let filteredProducts = [...mockProducts.products];
 
     // Apply category filter
@@ -54,13 +56,19 @@ const filterMockProducts = (params) => {
         });
     }
 
+    const paginatedProducts = filteredProducts.slice(offset, offset + limit); // Apply pagination
     return {
+        total: filteredProducts.length,
+        products: paginatedProducts, // Return paginated products
+
         total: filteredProducts.length,
         products: filteredProducts
     };
 };
 
 export const fetchProducts = (params = {}) => async (dispatch) => {
+    const { limit = 25, offset = 0 } = params; // Set default values for limit and offset
+
     try {
         dispatch({ type: 'FETCH_PRODUCTS_START' });
 
@@ -68,7 +76,8 @@ export const fetchProducts = (params = {}) => async (dispatch) => {
         await new Promise(resolve => setTimeout(resolve, 800));
 
         // For testing with mock data
-        const filteredData = filterMockProducts(params);
+        const filteredData = filterMockProducts({ ...params, limit, offset }); // Pass limit and offset
+
         dispatch({
             type: 'FETCH_PRODUCTS_SUCCESS',
             payload: filteredData
